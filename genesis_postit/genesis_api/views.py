@@ -8,3 +8,8 @@ class AlbumReviewList(generics.ListAPIView):
 
     def perform_create(self, serializer):
         serializer.safe(user=self.request.user)
+
+class AlbumReviewDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.AlbumReview.objects.all()
+    serializer_class = serializers.AlbumReviewSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

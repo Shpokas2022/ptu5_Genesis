@@ -22,7 +22,7 @@ class AlbumReview(models.Model):
         User,
         verbose_name=_('user'),
         on_delete=models.CASCADE,
-        related_name='post',
+        related_name='post'
     )
     # album_id = models.ForeignKey()
     review = models.TextField(_('review'))
@@ -43,7 +43,7 @@ class AlbumReviewComment(models.Model):
     album_review_id = models.ForeignKey(
         AlbumReview,
         verbose_name=_("album_review_id"),
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
         related_name='comments'
     )
 
