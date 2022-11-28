@@ -7,4 +7,4 @@ class AlbumReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.AlbumReview
-        fields = ('id', 'review', 'score')
+        fields = ('id', 'user', 'user_id', 'review', 'score')
