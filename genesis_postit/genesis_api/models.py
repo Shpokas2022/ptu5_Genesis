@@ -24,6 +24,7 @@ class AlbumReview(models.Model):
         on_delete=models.CASCADE,
         related_name='post'
     )
+    image = models.ImageField(_('image'), upload_to='user_images/', blank=True, null=True)
     # album_id = models.ForeignKey()
     review = models.TextField(_('review'))
     score = models.CharField(_('score'), max_length=10, help_text='enter score from 1 till 10')
@@ -52,7 +53,7 @@ class AlbumReviewComment(models.Model):
             album_review_id=self.album_review_id,
             user=self.user
         )
-        user = self.user
+        # user = self.user
 
 # class AlbumReviewLike(models.Model):
 #     user = models.ForeignKey(
@@ -62,3 +63,19 @@ class AlbumReviewComment(models.Model):
 #         related_name='like',
 #     )
 #     album_review_id = models.ForeignKey("album_review", verbose_name=_("album_review_id"), on_delete=models.CASCADE)
+class ReviewLike(models.Model):
+    user = models.ForeignKey(
+        User,
+        verbose_name=_('user'),
+        on_delete=models.CASCADE,
+        related_name='review_likes',
+    )
+    post = models.ForeignKey(
+        AlbumReview,
+        verbose_name=_('review'),
+        on_delete=models.CASCADE,
+        related_name='review_likes'
+    )
+
+    def __str__(self) -> str:
+        return f"{self.user} likes {self.post}"

@@ -8,3 +8,8 @@ class AlbumReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.AlbumReview
         fields = ('id', 'user', 'user_id', 'review', 'score')
+
+class ReviewLikeSerializer(serializers.ModelSerializere):
+    class Meta:
+        model = models.ReviewLike
+        fields = ('id',)
